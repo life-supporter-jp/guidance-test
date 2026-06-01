@@ -7,6 +7,7 @@
     <style>
         body { font-family: sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; background-color: #f9f9f9; }
         
+        /* 全体の横幅を550pxに制限して中央寄せ */
         .wrap { 
             max-width: 550px; 
             margin: 0 auto; 
@@ -16,18 +17,22 @@
             min-height: 100vh;
         }
 
+        /* 画像を親要素（.wrap）の幅いっぱいに表示 */
+        .banner-container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .content-area { text-align: center; padding: 20px 0; }
         h2 { font-size: 24px; font-weight: bold; margin-bottom: 15px; }
         p { font-size: 18px; margin-bottom: 20px; }
 
-        /* 画像調整用のスタイル */
-        .top-banner {
-            width: 70%; /* ここで横幅を調整してください */
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
+        /* QRとボタンのサイズ調整 */
         .qrcode { margin: 20px auto; }
         .addfriend_btn { width: 100%; max-width: 300px; display: inline-block; }
     </style>
@@ -35,9 +40,9 @@
 <body>
 
 <div class="wrap">
-<div class="banner-container">
-    <img class="top-banner" src="https://life-supporter.jp/sp/hxySQ4ff/ct5NJq8Z/images/XS012099.jpg">
-</div>
+    <div class="banner-container">
+        <img src="https://life-supporter.jp/sp/hxySQ4ff/ct5NJq8Z/images/XS012099.jpg" alt="ライフサポーターオンライン">
+    </div>
     
     <div class="content-area">
         <h2>ライフサポーターオンライン</h2>
@@ -46,6 +51,7 @@
         <p>2つのツールを追加しました。</p>
         <p>１）「今どこ救Ｒ」<br>
         QRコード無料作成、人、子供、物、ペットが行方不明になった時に、見つけてくれた人が指定した人に直接連絡します。</p>
+        
         <p>２）「お元気ですかメール」<br>
         単身でも安心見守りサービスから３０日体験版（家族用）が無料で利用できます。</p>
         
@@ -63,6 +69,7 @@
             <a href="https://g0qiltvg.autosns.app/line" class="addfriend_href">
                 <img class="addfriend_btn" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE友だち追加">
             </a>
+            
             <p>1）相続や医療のヒントをサポート<br>
             150以上のヒントを検索機能で簡単に調査可能。相続、医療、介護に関する情報を素早くゲット！<br>
             ★「知らない」はリスク 「知る」はギフト。<br>
@@ -84,6 +91,7 @@
             脳トレにぴったりのゲーム。気軽に楽しめるので、忙しい合間にも遊んでみてください。<br>
             ★４語前後のバラバラにしたひらがなが沢山出ます。簡単な問題ばかりですがお楽しみください。</p>
             <br>  
+            
             <div style="margin-top: 20px;">
                 <a href="https://g0qiltvg.autosns.app/line" class="addfriend_href">
                     <img class="addfriend_btn" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="LINE友だち追加">
@@ -92,5 +100,26 @@
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://autosns.jp/js/zbp/jquery.qrcode.min.js"></script>
+<script src="https://g0qiltvg.autosns.app/copy-qr/js?height=200&show=1"></script>
+
+<script>
+    window.addEventListener("load", function() {
+        let url = new URL(window.location.href);
+        let get_params = {};
+        for(entry of url.searchParams) { get_params[entry[0]] = entry[1]; }
+        get_params['partner_id'] = "A8ildpNc2q";
+        for(key in get_params) { 
+            let span = document.createElement('span');
+            span.className = 'proline-copy-qr-get-params';
+            span.setAttribute('data-key', key);
+            span.setAttribute('data-value', get_params[key]);
+            document.body.appendChild(span);
+        }
+    });
+</script>
+
 </body>
 </html>
